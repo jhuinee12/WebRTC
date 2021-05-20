@@ -347,7 +347,7 @@ public class CallActivity extends Activity implements AppRTCClient.SignalingEven
       Log.i(TAG, "Using DirectRTCClient because room name looks like an IP.");
       appRtcClient = new DirectRTCClient(this);
     }*/
-    if("firebase".equals(roomId)) {
+    if("jhee".equals(roomId)) {
       appRtcClient = new FirebaseRTCClient(this);
     } else if (loopback || !DirectRTCClient.IP_PATTERN.matcher(roomId).matches()) {
       appRtcClient = new WebSocketRTCClient(this);
