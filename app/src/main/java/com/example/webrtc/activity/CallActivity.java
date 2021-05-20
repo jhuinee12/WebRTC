@@ -35,6 +35,7 @@ import android.widget.Toast;
 import com.example.webrtc.CpuMonitor;
 import com.example.webrtc.adapter.AppRTCAudioManager;
 import com.example.webrtc.client.AppRTCClient;
+import com.example.webrtc.client.FirebaseRTCClient;
 import com.example.webrtc.fragment.CallFragment;
 import com.example.webrtc.client.DirectRTCClient;
 import com.example.webrtc.fragment.HudFragment;
@@ -340,12 +341,21 @@ public class CallActivity extends Activity implements AppRTCClient.SignalingEven
 
     // Create connection client. Use DirectRTCClient if room name is an IP otherwise use the
     // standard WebSocketRTCClient.
-    if (loopback || !DirectRTCClient.IP_PATTERN.matcher(roomId).matches()) {
+/*    if (loopback || !DirectRTCClient.IP_PATTERN.matcher(roomId).matches()) {
+      appRtcClient = new WebSocketRTCClient(this);
+    } else {
+      Log.i(TAG, "Using DirectRTCClient because room name looks like an IP.");
+      appRtcClient = new DirectRTCClient(this);
+    }*/
+    if("firebase".equals(roomId)) {
+      appRtcClient = new FirebaseRTCClient(this);
+    } else if (loopback || !DirectRTCClient.IP_PATTERN.matcher(roomId).matches()) {
       appRtcClient = new WebSocketRTCClient(this);
     } else {
       Log.i(TAG, "Using DirectRTCClient because room name looks like an IP.");
       appRtcClient = new DirectRTCClient(this);
     }
+
     // Create connection parameters.
     String urlParameters = intent.getStringExtra(EXTRA_URLPARAMETERS);
     roomConnectionParameters =
