@@ -5,6 +5,8 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.util.Log;
 
+import androidx.annotation.RequiresApi;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -127,13 +129,14 @@ public class FirebaseRTCClient implements AppRTCClient, ValueEventListener {
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void connectToRoom(RoomConnectionParameters connectionParameters) {
         Log.d(TAG, "connect to room : " + connectionParameters.roomId);
         if (connectionParameters.loopback) {
             Log.d(TAG, "Loopback connections aren't supported by FirebaseRTCClient.");
         }
-        myId = Build.SERIAL;
+        myId = Build.getSerial();
         database.child("/channels/firebase").addValueEventListener(this);
     }
 
