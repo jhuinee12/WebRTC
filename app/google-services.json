@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "212756867326",
+    "project_id": "webrtc-6cdf4",
+    "storage_bucket": "webrtc-6cdf4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:212756867326:android:ad394c1458346d97b15daf",
+        "android_client_info": {
+          "package_name": "com.example.webrtc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "212756867326-5s9nhu7nccsdm9ool111vqvl4lfprcoj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.webrtc",
+            "certificate_hash": "9d8622632dfe99673dd430597cd4042b3d957836"
+          }
+        },
+        {
+          "client_id": "212756867326-0anf8o7g0hjngumjtir8ujecb212l1l6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRtSo3oiB94rT2YM9rcaPUqxJCrQPVzVA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "212756867326-0anf8o7g0hjngumjtir8ujecb212l1l6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
