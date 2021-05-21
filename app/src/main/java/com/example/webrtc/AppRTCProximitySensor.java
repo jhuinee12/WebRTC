@@ -31,6 +31,8 @@ import org.webrtc.ThreadUtils;
  * value i.e. the LUX value of the light sensor is compared with a threshold.
  * A LUX-value more than the threshold means the proximity sensor returns "FAR".
  * Anything less than the threshold value and the sensor  returns "NEAR".
+ * 근접센서를 통해 기기를 감지하는 데 필요할 클래스
+ * 기본적인 장치로 영상통화 하는데 없어도 무방
  */
 public class AppRTCProximitySensor implements SensorEventListener {
   private static final String TAG = "AppRTCProximitySensor";

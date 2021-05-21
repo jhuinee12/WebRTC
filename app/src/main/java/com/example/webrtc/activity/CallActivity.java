@@ -32,13 +32,11 @@ import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Toast;
 
-import com.example.webrtc.CpuMonitor;
 import com.example.webrtc.adapter.AppRTCAudioManager;
 import com.example.webrtc.client.AppRTCClient;
 import com.example.webrtc.client.FirebaseRTCClient;
 import com.example.webrtc.fragment.CallFragment;
 import com.example.webrtc.client.DirectRTCClient;
-import com.example.webrtc.fragment.HudFragment;
 import com.example.webrtc.client.PeerConnectionClient;
 import com.example.webrtc.R;
 import com.example.webrtc.adapter.UnhandledExceptionHandler;

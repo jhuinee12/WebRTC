@@ -18,9 +18,6 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-import com.example.webrtc.RtcEventLog;
-import com.example.webrtc.adapter.RecordedAudioToFileController;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;

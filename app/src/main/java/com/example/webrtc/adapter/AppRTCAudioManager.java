@@ -35,6 +35,7 @@ import org.webrtc.ThreadUtils;
 
 /**
  * AppRTCAudioManager manages all audio related parts of the AppRTC demo.
+ * 음성(입·출력)을 종합적으로 관리하여 전송하는데 필요한 클래스
  */
 public class AppRTCAudioManager {
   private static final String TAG = "AppRTCAudioManager";
@@ -196,7 +197,7 @@ public class AppRTCAudioManager {
         this ::onProximitySensorChangedState);
 
     Log.d(TAG, "defaultAudioDevice: " + defaultAudioDevice);
-    AppRTCUtils.logDeviceInfo(TAG);
+    AppRTCUtils.logDeviceInfo(TAG); // 현재 빌드에 대한 정보 출력(로그)
   }
 
   @SuppressLint("WrongConstant")

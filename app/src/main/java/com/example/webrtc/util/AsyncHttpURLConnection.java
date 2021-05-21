@@ -20,15 +20,16 @@ import java.util.Scanner;
 
 /**
  * Asynchronous http requests implementation.
+ * 웹소켓을 통해 https://appr.tc 와 통신하여 Room을 생성하기 위한 헬퍼 클래스.
  */
 public class AsyncHttpURLConnection {
   private static final int HTTP_TIMEOUT_MS = 8000;
   private static final String HTTP_ORIGIN = "https://appr.tc";
-  private final String method;
-  private final String url;
+  private final String method;  // GET VS POST
+  private final String url; // RoomUrl
   private final String message;
   private final AsyncHttpEvents events;
-  private String contentType;
+  private String contentType; // utf-8 등등 타입 지정
 
   /**
    * Http requests callbacks.
@@ -60,19 +61,22 @@ public class AsyncHttpURLConnection {
       if (message != null) {
         postData = message.getBytes("UTF-8");
       }
-      connection.setRequestMethod(method);
-      connection.setUseCaches(false);
-      connection.setDoInput(true);
-      connection.setConnectTimeout(HTTP_TIMEOUT_MS);
-      connection.setReadTimeout(HTTP_TIMEOUT_MS);
+      connection.setRequestMethod(method);  // 통신 방식 설정 GET vs POST : 매개변수로 받아옴
+      connection.setUseCaches(false); // 캐싱데이터를 받을지 안받을지
+      connection.setDoInput(true);  // Server 통신에서 입력 가능한 상태로 만듬 (읽기모드 지정)
+      connection.setConnectTimeout(HTTP_TIMEOUT_MS);  // 연결시간 초과 설정
+      connection.setReadTimeout(HTTP_TIMEOUT_MS);  // 데이터 읽어오는 시간 초과 설정
       // TODO(glaznev) - query request origin from pref_room_server_url_key preferences.
       connection.addRequestProperty("origin", HTTP_ORIGIN);
       boolean doOutput = false;
       if (method.equals("POST")) {
-        doOutput = true;
-        connection.setDoOutput(true);
-        connection.setFixedLengthStreamingMode(postData.length);
+        doOutput = true;  // POST 방식 연결 성공
+        connection.setDoOutput(true);  // Server 통신에서 출력 가능한 상태로 만듬 (쓰기모드 지정)
+        connection.setFixedLengthStreamingMode(postData.length);  // 고정 길이 스트링 모드 : 요청 데이터의 크기를 미리 알 수 있는 경우
       }
+      
+      // utf-8 등등 타입 지정
+      // 이 프로젝트에서는 setContentType() 메서드를 호출하지 않았으므로 null 값 들어옴
       if (contentType == null) {
         connection.setRequestProperty("Content-Type", "text/plain; charset=utf-8");
       } else {
@@ -80,7 +84,10 @@ public class AsyncHttpURLConnection {
       }
 
       // Send POST request.
+      // POST 방식이 성공했다!
       if (doOutput && postData.length > 0) {
+        // OutputStream : 데이터가 나가는 통로의 역할에 관해 규정하고 있는 추상 클래스
+        // OutputStream이 갖춰야 할 것 : 데이터 쓰기, 버퍼 비우기, 통로 끊기
         OutputStream outStream = connection.getOutputStream();
         outStream.write(postData);
         outStream.close();
@@ -88,12 +95,16 @@ public class AsyncHttpURLConnection {
 
       // Get response.
       int responseCode = connection.getResponseCode();
+      // 요청 정상 처리 응답 코드 : 200
+      // 그 외의 코드는 에러 처리
       if (responseCode != 200) {
         events.onHttpError("Non-200 response to " + method + " to URL: " + url + " : "
             + connection.getHeaderField(null));
         connection.disconnect();
         return;
       }
+      // InputStream : 데이터를 byte 단위로 읽어들이는 통로
+      // InputStream이 갖춰야 할 것 : 데이터 읽기, 특정 시점으로 되돌아가기, 얼마나 데이터가 남았는지 보여주기, 통로 끊기
       InputStream responseStream = connection.getInputStream();
       String response = drainStream(responseStream);
       responseStream.close();

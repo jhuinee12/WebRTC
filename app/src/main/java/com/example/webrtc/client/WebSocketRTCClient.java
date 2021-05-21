@@ -385,7 +385,7 @@ public class WebSocketRTCClient implements AppRTCClient, WebSocketChannelClient.
     }
     Log.d(TAG, "C->GAE: " + logInfo);
     AsyncHttpURLConnection httpConnection =
-        new AsyncHttpURLConnection("POST", url, message, new AsyncHttpURLConnection.AsyncHttpEvents() {
+        new AsyncHttpURLConnection("POST", url, message, new AsyncHttpURLConnection.AsyncHttpEvents() { // POST 방식으로 연결
           @Override
           public void onHttpError(String errorMessage) {
             reportError("GAE POST error: " + errorMessage);

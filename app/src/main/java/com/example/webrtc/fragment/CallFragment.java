@@ -22,7 +22,6 @@ import android.widget.TextView;
 
 import com.example.webrtc.R;
 import com.example.webrtc.activity.CallActivity;
-import com.example.webrtc.adapter.CaptureQualityController;
 
 import org.webrtc.RendererCommon.ScalingType;
 
