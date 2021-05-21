@@ -50,6 +50,7 @@ public class AppRTCAudioManager {
   public enum AudioDevice { SPEAKER_PHONE, WIRED_HEADSET, EARPIECE, BLUETOOTH, NONE }
 
   /** AudioManager state. */
+  // enum : 열거형, 서로 연관된 상수들의 집합
   public enum AudioManagerState {
     UNINITIALIZED,
     PREINITIALIZED,

@@ -122,8 +122,6 @@ public class CallFragment extends Fragment {
       cameraSwitchButton.setVisibility(View.INVISIBLE);
     }
     if (captureSliderEnabled) {
-      captureFormatSlider.setOnSeekBarChangeListener(
-          new CaptureQualityController(captureFormatText, callEvents));
     } else {
       captureFormatText.setVisibility(View.GONE);
       captureFormatSlider.setVisibility(View.GONE);

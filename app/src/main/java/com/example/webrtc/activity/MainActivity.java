@@ -390,7 +390,7 @@ public class MainActivity extends Activity {
     }
 
     @SuppressWarnings("StringSplitter")
-    private void connectToRoom(String roomId, boolean commandLineRun, boolean loopback,
+    private void connectToRoom(String roomId, boolean commandLineRun, boolean loopback, /*roomId,false,false,false,0*/
                                boolean useValuesFromIntent, int runTimeMs) {
         MainActivity.commandLineRun = commandLineRun;
 
@@ -693,6 +693,7 @@ public class MainActivity extends Activity {
         }
     };
 
+    // call 전화기 버튼 클릭 이벤트
     private final OnClickListener connectListener = new OnClickListener() {
         @Override
         public void onClick(View view) {
