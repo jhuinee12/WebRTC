@@ -32,6 +32,10 @@ import org.json.JSONObject;
  * <p>All public methods should be called from a looper executor thread
  * passed in a constructor, otherwise exception will be thrown.
  * All events are dispatched on the same thread.
+ *
+ * https://appr.tc 를 사용하여 영상통화를 하기 위해 필요한 클래스
+ * autobahn 라이브러리를 사용하여 웹 통신을 진행 함.
+ * WSS, WSS POST, TURN ,STUN 서버를 사용하여 가장 최적화 된 경로를 찾도록 함
  */
 public class WebSocketChannelClient {
   private static final String TAG = "WSChannelRTCClient";

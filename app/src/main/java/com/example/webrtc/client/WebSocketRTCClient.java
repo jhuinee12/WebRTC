@@ -33,6 +33,9 @@ import org.webrtc.SessionDescription;
  * onConnectedToRoom() callback with room parameters is invoked.
  * Messages to other party (with local Ice candidates and answer SDP) can
  * be sent after WebSocket connection is established.
+ *
+ * 웹소켓을 사용하여 영상통화를 하기 위해 필요한 클래스
+ * AppRTCClient 인터페이스 및 WebSocketChannelClient 클래스를 사용하여 웹 통신을 진행함.
  */
 public class WebSocketRTCClient implements AppRTCClient, WebSocketChannelClient.WebSocketChannelEvents {
   private static final String TAG = "WSRTCClient";

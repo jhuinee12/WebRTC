@@ -32,6 +32,8 @@ import org.webrtc.SessionDescription;
 /**
  * AsyncTask that converts an AppRTC room URL into the set of signaling
  * parameters to use with that room.
+ * 영상통화를 웹소켓(https://appr.tc)을 통해 시작할 경우. Signalling 서버를 대신하는 AsyncTask 클래스.
+ * https://appr.tc 와 통신하여 방번호를 등록하고, 통화 상대방을 기다리기 까지의 절차를 수행함.
  */
 public class RoomParametersFetcher {
   private static final String TAG = "RoomRTCClient";

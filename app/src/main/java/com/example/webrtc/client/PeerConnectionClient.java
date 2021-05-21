@@ -85,6 +85,7 @@ import org.webrtc.audio.JavaAudioDeviceModule.AudioTrackStateCallback;
  * <p>All public methods are routed to local looper thread.
  * All PeerConnectionEvents callbacks are invoked from the same looper thread.
  * This class is a singleton.
+ * CallActivity에서 오디오, 비디오 요소들을 바탕으로 ICE Candidate를 생성하여 데이터(오디오&비디오)를 p2p보내는 클래스 및 인터페이스
  */
 public class PeerConnectionClient {
   public static final String VIDEO_TRACK_ID = "ARDAMSv0";
